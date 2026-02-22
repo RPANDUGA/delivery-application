@@ -1,0 +1,15 @@
+name: shared
+description: Shared models and UI for the food delivery apps
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: ">=3.2.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  intl: ^0.19.0
+
+flutter:
+  uses-material-design: true

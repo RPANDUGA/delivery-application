@@ -1,0 +1,30 @@
+# Flutter/Dart
+.dart_tool/
+.packages
+.pub-cache/
+build/
+
+# Flutter platform builds
+android/.gradle/
+android/app/build/
+android/local.properties
+ios/Pods/
+ios/Runner.xcworkspace/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Node
+node_modules/
+
+# Firebase / secrets
+**/google-services.json
+**/GoogleService-Info.plist
+scripts/seed/serviceAccount.json
+**/*.keystore
+**/*.jks
+
+# OS
+.DS_Store

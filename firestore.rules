@@ -1,0 +1,39 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && request.auth.token.admin == true;
+    }
+
+    match /courierDeliveries/{orderId} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn();
+      allow update: if isAdmin();
+      allow delete: if false;
+    }
+
+    match /orders/{orderId} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn();
+    }
+
+    match /courierTasks/{taskId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    match /courierLocations/{orderId} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn();
+    }
+
+    match /restaurants/{restaurantId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+  }
+}
